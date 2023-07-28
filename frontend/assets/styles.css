@@ -1,0 +1,55 @@
+body {
+	background-color: #14181e !important;
+	color: white !important;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.canvas_wrapper {
+	align-items: center;
+	border-radius: .3rem;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.guess_wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+    max-width: 1000px;
+    padding: 10px;
+}
+
+.guesses_wrapper {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 60px);
+	/*max-width: 30%;*/
+    /*margin: 0 25% 0 25%;*/
+	margin: 0 auto;
+    max-width: 1000px;
+    padding: 10px;
+}
+
+.former_guess {
+	background-color: #1e1e1e;
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 1rem;
+}
+
+canvas {
+	background-color: #1e1e1e;
+	border: 1px solid gray;
+	border-radius: 1rem;
+}
+
+.guess_flag {
+	width: 2rem;
+}
+
+.dropdown,
+.item {
+    background-color: #1e1e1e !important;
+}

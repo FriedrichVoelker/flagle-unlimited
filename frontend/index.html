@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="assets/styles.css">
+	<script src="assets/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<title>Flagle - Unlimited</title>
+</head>
+<body>
+    <header class="ui segment" style="background-color: black;">
+        <h2>Flagle - Unlimited</h2>
+        Score: <span id="score">0</span> <br>
+        Highscore: <span id="highscore">0</span>
+    </header>
+
+	<main style="padding-top: 20px;">
+
+
+		<div class="canvas_wrapper">
+
+			<canvas id="canvas" width="250"></canvas>
+		</div>
+		<br>
+
+		<br>
+		<div class="guesses_wrapper" id="guesses_wrapper">
+			<div class="former_guess">&nbsp;</div>
+			<div class="former_guess">&nbsp;</div>
+			<div class="former_guess">&nbsp;</div>
+			<div class="former_guess">&nbsp;</div>
+			<div class="former_guess">&nbsp;</div>
+			<div class="former_guess">&nbsp;</div>
+			<!-- %%DEV_FLAG%% -->
+		</div>
+		<div class="guess_wrapper">
+			<!--<input type="text" name="" id="guess_input">-->
+
+            <!--<input type="text" name="guess_input" id="guess_input" list="flags">
+            <datalist id="flags">
+            </datalist>-->
+
+            <br>
+
+            <div class="ui fluid search selection dropdown teal">
+                <input type="hidden" name="country" id="guess_input">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Country</div>
+                <div class="menu" id="dropdown_content" style="max-height: 200px;">
+                    %%DROPDOWN_CONTENT%%
+              </div>
+            </div>
+
+
+			<br>
+			<br>
+			<button style="margin-top: 10px;" class="ui inverted violet button" type="button" id="guess_button">Guess</button>
+			<button style="margin-top: 10px;" class="ui inverted violet button" type="button" id="restart_button">Reset</button>
+		</div>
+
+
+	</main>
+
+    <footer style="text-align: center;padding: 12px 0;">
+        <!--<div class="ui segment" style="background-color: black;">-->
+            <p>Heavily inspired by <a href="https://flagle-game.com/">flagle-game.com</a> <br>
+            Developed with <i style="color: red;" class="heart icon"></i> by <a href="https://völker.dev/">Friedrich Völker</a></p>
+    </footer>
+
+	<script defer>
+		document.getElementById('guess_button').addEventListener('click', () => {
+			let guess = document.getElementById('guess_input').value;
+            if(!guess || guess == "") return; 
+			checkFlag(guess);
+            $('.ui.dropdown').dropdown('clear')
+		});
+
+        document.getElementById('restart_button').addEventListener('click', () => {
+            restart();
+        });
+
+		//document.getElementById('guess_input').addEventListener('keyup', (e) => {
+		//	if (e.keyCode === 13) {
+		//		let guess = document.getElementById('guess_input').value;
+		//		checkFlag(guess);
+		//	}
+		//});
+		//setSource(%%SOURCE_IMAGE%%, %%SOURCE_NAME%%);
+
+        $('.ui.dropdown').dropdown({
+            clearable: true,
+            placeholder: 'Select Country'
+        });
+
+        document.getElementById('score').innerHTML = score
+        document.getElementById('highscore').innerHTML = highscore
+
+	</script>
+
+</body>
+</html>

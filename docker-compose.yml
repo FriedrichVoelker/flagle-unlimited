@@ -1,0 +1,6 @@
+services:
+  flagle_web:
+    container_name: flagle_web
+    build: .
+    ports:
+      - "3369:3000"
